@@ -49,7 +49,7 @@ bot.onText(/\/api (.+)/, (msg, match) => {
   // Save the user's MyBios API token to the database
   saveUserToken(chatId, userToken);
 
-  const response = `MyBios API token set successfully. Your token: ${userToken}`;
+  const response = `Flame Url API token set successfully. Your token: ${userToken}`;
   bot.sendMessage(chatId, response);
 });
 
@@ -70,12 +70,12 @@ async function shortenUrlAndSend(chatId, Url) {
   const arklinksToken = getUserToken(chatId);
 
   if (!arklinksToken) {
-    bot.sendMessage(chatId, 'Please provide your MyBios API token first. Use the command: /api YOUR_MYBIOS_API_TOKEN');
+    bot.sendMessage(chatId, 'Please provide your Flame Url API token first. Use the command: /api YOUR_MYBIOS_API_TOKEN');
     return;
   }
 
   try {
-    const apiUrl = `https://mybios.eu.org/api?api=${arklinksToken}&url=${Url}`;
+    const apiUrl = `https://flameurl.com/api?api=${arklinksToken}&url=${Url}`;
 
     // Make a request to the MyBios API to shorten the URL
     const response = await axios.get(apiUrl);
